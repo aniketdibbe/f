@@ -1,0 +1,110 @@
+pimcore:
+    workflows:
+        workflow:
+            label: "Product Workflow"
+            type: "state_machine"
+            supports:
+                - 'Pimcore\Model\DataObject\Furniture'
+            places:
+                new:
+                    label: "New product"
+                    color: "#377ea9"
+                    permissions:
+                        - objectLayout: 1
+                rejected:
+                    label: "Rejected product"
+                    color: "#28a013"
+                Base_Data:
+                    label: "BaseData"
+                    title: "Add Specification"
+                    color: "#d9ef36"
+                    permissions:
+                        - objectLayout: 2
+                Additional_Data:
+                    label: "AdditionalData"
+                    title: "Add Specification"
+                    color: "#d9ef36"
+                    permissions:
+                        - objectLayout: 2
+                Add_Specification:
+                    label: "Add Color and Price"
+                    title: "Add Color and Price"
+                    color: "#d9ef36"
+                    permissions:
+                        - objectLayout: 3
+                Color_and_Price:
+                    label: "Merchant and Order Details "
+                    title: "Merchant and Order Details"
+                    color: "#d9ef36"
+                    permissions:
+                        - objectLayout: 4
+                Seller_Details:
+                    label: "Product Details"
+                    title: "Content ready to publish"
+                    color: "#28a013"
+                accepted:
+                    label: "Accepted product"
+                    color: "#28a013"
+
+            transitions:
+                reject_product:
+                    from: [Seller_Details]
+                    to: new
+                    options:
+                        label: "Reject the product"
+                        notes:
+                            commentEnabled: true
+                            commentRequired: true
+                Add_additional:
+                    from: [new, Seller_Details]
+                    to: Additional_Data
+                    options:
+                        label: "Start processing the product"
+                        notes:
+                            commentEnabled: true
+                            commentRequired: false
+                start_processing:
+                    from: [Additional_Data, Seller_Details]
+                    to: Add_Specification
+                    options:
+                        label: "Add Color and Price"
+                        notes:
+                            commentEnabled: true
+                            commentRequired: false
+                content_updated:
+                    from: Base_Data
+                    to: Add_Specification
+                    guard: "is_fully_authenticated() and is_granted('ROLE_Data_Entry_Role')"
+                    options:
+                        label: "Add Specification"
+                        notes:
+                            commentEnabled: true
+                            commentRequired: false
+                Specification_added:
+                    from: Add_Specification
+                    to: Color_and_Price
+                    guard: "is_fully_authenticated() and is_granted('ROLE_Media_Role')"
+                    options:
+                        label: " Merchant And Order Details"
+                        notes:
+                            commentEnabled: true
+                            commentRequired: false
+                content_ready:
+                    from: Color_and_Price
+                    to: Seller_Details
+                    options:
+                        label: "Content is ready to publish"
+                publish:
+                    from: Seller_Details
+                    to: accepted
+                    guard: "is_fully_authenticated() and is_granted('ROLE_Reviewer_role')"
+                    options:
+                        label: "Publish the product"
+                        notes:
+                            commentEnabled: true
+                            commentRequired: true
+                            additionalFields:
+                                - name: "timeWorked"
+                                  fieldType: "input"
+                                  title: "Time Spent"
+                                  required: true

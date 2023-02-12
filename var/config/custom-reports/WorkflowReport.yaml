@@ -1,0 +1,24 @@
+pimcore:
+    custom_report:
+        definitions:
+            WorkflowReport:
+                name: WorkflowReport
+                sql: ''
+                dataSourceConfig: {  }
+                columnConfiguration: {  }
+                niceName: ''
+                group: ''
+                groupIconClass: ''
+                iconClass: ''
+                menuShortcut: true
+                reportClass: ''
+                chartType: ''
+                pieColumn: ''
+                pieLabelColumn: ''
+                xAxis: ''
+                yAxis: {  }
+                modificationDate: 1676186293
+                creationDate: 1676186293
+                shareGlobally: true
+                sharedUserNames: {  }
+                sharedRoleNames: {  }
