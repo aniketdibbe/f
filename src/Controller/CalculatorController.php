@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Pimcore\Controller\FrontendController;
 use Pimcore\Model\DataObject\Calculator;
 use Pimcore\Model\DataObject\Localizedfield;
-use Pimcore\Model\DataObject\Clothes;
+use Pimcore\Model\DataObject\Furniture;
 
 class CalculatorController implements CalculatorClassInterface
 {
@@ -35,8 +35,9 @@ class CalculatorController implements CalculatorClassInterface
     public function compute(Concrete $object, CalculatedValue $context):string {
         if ($context->getFieldname() == "OfferPrice") {
             $language = $context->getPosition();
-            $result = $object->getActualPrice($language) *  $object->getOffPercentage($language);
-            return $object->getActualPrice($language) - $result;
+            $discount = $object->getDiscount($language) / 100; 
+            $result = $object->getOriginalPrice($language) *  $discount;
+            return $object->getOriginalPrice($language) - $result;
         } else {
             \Logger::error("unknown field");
         }

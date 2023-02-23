@@ -20,27 +20,41 @@ class ApiController extends FrontendController
      * @return Response
      */
     /**
-     * @Route("/email", name="email",methods={"GET"})
+     * @Route("/furnitureapi", name="furnitureapi",methods={"GET"})
      */
     public function ApiAction(Request $request)
     {
         
         $Furniture=new DataObject\Furniture\Listing();
-        foreach($Furniture as $key=>$data)
+        $Furniture->setOrderKey("Category");
+        $Furniture->setOrder("asc");
+        $outputstr=strtolower($request->get("name"));
+        $output1=str_replace(' ', '', $outputstr);
+        $Furniture->setObjectTypes([Furniture::OBJECT_TYPE_VARIANT,Furniture::OBJECT_TYPE_OBJECT]);
+        //$out1=strtolower($request->get("SKU"));
+        foreach($Furniture as $key =>$data)
         {
             //"Category"=>$data->getCategory();
             $Sofas=$data->getCategoriesDetails()->getSofas();
-             $Bed=$data->getCategoriesDetails()->getBed();
-             $Dinning=$data->getCategoriesDetails()->getDinning();
+            $Bed=$data->getCategoriesDetails()->getBed();
+            $Dinning=$data->getCategoriesDetails()->getDinning();
+            //$input=strtolower($Bed->getBedType());
+            
 
-            if($Bed!=NULL)
+            if($Bed!=NULL )
             {
+                if($output1=="Bed"){
+
                 $smallOutput[]=array(
                     "BedType"=>$Bed->getBedType(),
                     "Storage"=>$Bed->getStorage(),
                     "Material"=>$Bed->getMaterial(),
                     "Fabric"=>$Bed->getFabric(),
+                   "RecommendedMattressSize"=>$Bed->getRecommendedMattressSize(),
+                   
+                   
                 );
+            }
             }
             else if($Sofas!=NULL)
             {
@@ -70,25 +84,31 @@ class ApiController extends FrontendController
             }
             $output[]=array(
                 // "value" => $data->getSKU(),
+                "Category"=>$data->getCategory(),
                 "productName"=>$data->getProductName(),
                 "SKU"=>$data->getSKU(),
                 "Brand"=>$data->getBrand()[0]->getBrandName(),
-                "ProductMainImage"=>$data->getProductMainImage()->getFullPath(),
-                "Description"=>$data->getDescription()[0]->getProductDescription(),
-                "CountryOfOrigin"=>$data->getDescription()[0]->getCountryOfOrigin(),
-                "Dimension"=>$data->getDimension()[0]->getLength()->getValue(),
-                "Dimension"=>$data->getDimension()[0]->getHeight()->getValue(),
-                "Dimension"=>$data->getDimension()[0]->getWidth()->getValue(),
-                "Color"=>$data->getColor(),
-                "RelatedImages"=>$data->getRelatedImages()[0]->getFullPath(),
-                "MerchantInfo"=>$data->getManufacturer()[0]->getName(),
-                "MerchantInfo"=>$data->getManufacturer()[0]->getManufacturerId(),
-                "Seller"=>$data->getSeller()[0]->getName(),
-                "Seller"=>$data->getSeller()[0]->getSellerId(),
+                //"ProductMainImage"=>$data->getProductMainImage()->getFullPath(),
+                //"Description"=>$data->getDescription()[0]->getProductDescription(),
+                // "CountryOfOrigin"=>$data->getDescription()[0]->getCountryOfOrigin(),
+                // "Dimension"=>$data->getDimension()[0]->getLength()->getValue(),
+                // "Dimension"=>$data->getDimension()[0]->getHeight()->getValue(),
+                // "Dimension"=>$data->getDimension()[0]->getWidth()->getValue(),
+                  "Color"=>$data->getColor(),
+                //  "RelatedImages"=>$data->getRelatedImages()[0]->getFullPath(),
+                // "MerchantInfo"=>$data->getManufacturer()[0]->getName(),
+                // "MerchantInfo"=>$data->getManufacturer()[0]->getManufacturerId(),
+                 //"Seller"=>$data->getSeller()[0]->getName(),
+                // "Seller"=>$data->getSeller()[0]->getSellerId(),
+       
+                "BrickData" => $smallOutput,
+              
                 //"Data"=>$smallOutput
             );
             $smallOutput=[];
         }
+       
+
         return $this->json(["success" => true, "data" => $output]);
     }
 }

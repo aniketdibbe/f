@@ -1,0 +1,62 @@
+pimcore_data_hub:
+    configurations:
+        newcsv:
+            general:
+                type: dataImporterDataObject
+                name: newcsv
+                description: ''
+                group: ''
+                active: false
+                path: null
+                modificationDate: 1676966916
+                createDate: 1676964457
+            loaderConfig:
+                type: asset
+                settings:
+                    assetPath: '/export (1).csv'
+            interpreterConfig:
+                type: csv
+                settings:
+                    skipFirstRow: true
+                    delimiter: ;
+                    enclosure: '"'
+                    escape: \
+            resolverConfig:
+                elementType: dataObject
+                dataObjectClassId: '14'
+                loadingStrategy:
+                    type: notLoad
+                createLocationStrategy:
+                    type: staticPath
+                    settings:
+                        path: /CSV
+                locationUpdateStrategy:
+                    type: noChange
+                publishingStrategy:
+                    type: noChangeUnpublishNew
+            processingConfig:
+                executionType: sequential
+                doArchiveImportFile: true
+                idDataIndex: ''
+            mappingConfig:
+                -
+                    label: cat
+                    dataSourceIndex:
+                        - '1'
+                    transformationResultType: default
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: Category
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline: {  }
+            executionConfig:
+                scheduleType: job
+                cronDefinition: ''
+                scheduledAt: '21-02-2023 13:38'
+            permissions:
+                user: {  }
+                role: {  }
+            workspaces: {  }

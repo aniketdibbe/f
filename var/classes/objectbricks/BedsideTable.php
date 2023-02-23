@@ -6,6 +6,7 @@
  * - Fabric [select]
  * - DrawerNumber [numeric]
  * - Legs [numeric]
+ * - NumberOfExtraShelf [numeric]
  * - Weight [quantityValue]
  */
 
@@ -51,7 +52,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'name' => 'General',
              'type' => NULL,
              'region' => NULL,
-             'title' => '',
+             'title' => 'General',
              'width' => '',
              'height' => '',
              'collapsible' => false,
@@ -152,6 +153,37 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
               Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                  'name' => 'Legs',
                  'title' => 'Legs',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'numeric',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => true,
+                 'visibleSearch' => true,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'integer' => false,
+                 'unsigned' => false,
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'unique' => false,
+                 'decimalSize' => NULL,
+                 'decimalPrecision' => NULL,
+                 'defaultValueGenerator' => '',
+              )),
+              4 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                 'name' => 'NumberOfExtraShelf',
+                 'title' => 'Number Of Extra Shelf',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -288,7 +320,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
     0 => 
     array (
       'classname' => 'Furniture',
-      'fieldname' => 'Category',
+      'fieldname' => 'CategoriesDetails',
     ),
   ),
 ));

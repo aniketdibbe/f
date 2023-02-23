@@ -1,0 +1,62 @@
+pimcore_data_hub:
+    configurations:
+        ProductCsv:
+            general:
+                active: true
+                type: dataImporterDataObject
+                name: ProductCsv
+                description: ''
+                group: ''
+                path: null
+                modificationDate: 1676280026
+                createDate: 1676273659
+            loaderConfig:
+                type: asset
+                settings:
+                    assetPath: '/export (2).csv'
+            interpreterConfig:
+                type: csv
+                settings:
+                    skipFirstRow: true
+                    delimiter: ;
+                    enclosure: '"'
+                    escape: \
+            resolverConfig:
+                elementType: dataObject
+                dataObjectClassId: '11'
+                loadingStrategy:
+                    type: notLoad
+                createLocationStrategy:
+                    type: staticPath
+                    settings:
+                        path: /CSV
+                locationUpdateStrategy:
+                    type: noChange
+                publishingStrategy:
+                    type: noChangeUnpublishNew
+            processingConfig:
+                executionType: sequential
+                doArchiveImportFile: true
+                idDataIndex: ''
+            mappingConfig:
+                -
+                    label: ProductNew
+                    dataSourceIndex:
+                        - '40'
+                    transformationResultType: default
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: ProductName
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline: {  }
+            executionConfig:
+                scheduleType: job
+                cronDefinition: ''
+                scheduledAt: '13-02-2023 13:07'
+            permissions:
+                user: {  }
+                role: {  }
+            workspaces: {  }

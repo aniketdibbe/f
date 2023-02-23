@@ -1,0 +1,62 @@
+pimcore_data_hub:
+    configurations:
+        CategoryNodification:
+            general:
+                active: true
+                type: dataImporterDataObject
+                name: CategoryNodification
+                description: ''
+                group: ''
+                path: null
+                modificationDate: 1676352951
+                createDate: 1676352858
+            loaderConfig:
+                type: asset
+                settings:
+                    assetPath: /Category.csv
+            interpreterConfig:
+                type: csv
+                settings:
+                    skipFirstRow: true
+                    delimiter: ;
+                    enclosure: '"'
+                    escape: \
+            resolverConfig:
+                elementType: dataObject
+                dataObjectClassId: '14'
+                loadingStrategy:
+                    type: notLoad
+                createLocationStrategy:
+                    type: staticPath
+                    settings:
+                        path: /CategoryCSV
+                locationUpdateStrategy:
+                    type: noChange
+                publishingStrategy:
+                    type: noChangeUnpublishNew
+            processingConfig:
+                executionType: sequential
+                doArchiveImportFile: true
+                idDataIndex: ''
+            mappingConfig:
+                -
+                    label: Category
+                    dataSourceIndex:
+                        - '5'
+                    transformationResultType: default
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: Category
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline: {  }
+            executionConfig:
+                scheduleType: job
+                cronDefinition: ''
+                scheduledAt: '14-02-2023 11:05'
+            permissions:
+                user: {  }
+                role: {  }
+            workspaces: {  }

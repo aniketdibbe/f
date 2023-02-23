@@ -1,0 +1,326 @@
+pimcore:
+    custom_report:
+        definitions:
+            workflow:
+                name: workflow
+                sql: ''
+                dataSourceConfig:
+                    -
+                        sql: '*'
+                        from: "element_workflow_state as W\nJOIN object_11 as F ON W.cid=F.o_id\n"
+                        where: ''
+                        groupby: ''
+                        type: sql
+                columnConfiguration:
+                    -
+                        name: cid
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-3
+                    -
+                        name: ctype
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-4
+                    -
+                        name: place
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-5
+                    -
+                        name: workflow
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-6
+                    -
+                        name: oo_id
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-7
+                    -
+                        name: oo_classId
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-8
+                    -
+                        name: oo_className
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-9
+                    -
+                        name: ProductName
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-10
+                    -
+                        name: SKU
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-11
+                    -
+                        name: ProductMainImage
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-12
+                    -
+                        name: Brand
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-13
+                    -
+                        name: Description
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-14
+                    -
+                        name: Dimension
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-15
+                    -
+                        name: Color
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-16
+                    -
+                        name: Manufacturer
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-17
+                    -
+                        name: RelatedImages
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-18
+                    -
+                        name: Seller
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-19
+                    -
+                        name: CustomerAddress__id
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-20
+                    -
+                        name: CustomerAddress__type
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-21
+                    -
+                        name: Marketer
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-22
+                    -
+                        name: Category
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-23
+                    -
+                        name: o_id
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-24
+                    -
+                        name: o_parentId
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-25
+                    -
+                        name: o_type
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-26
+                    -
+                        name: o_key
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-27
+                    -
+                        name: o_path
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-28
+                    -
+                        name: o_index
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-29
+                    -
+                        name: o_published
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-30
+                    -
+                        name: o_creationDate
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-31
+                    -
+                        name: o_modificationDate
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-32
+                    -
+                        name: o_userOwner
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-33
+                    -
+                        name: o_userModification
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-34
+                    -
+                        name: o_classId
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-35
+                    -
+                        name: o_className
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-36
+                    -
+                        name: o_childrenSortBy
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-37
+                    -
+                        name: o_childrenSortOrder
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-38
+                    -
+                        name: o_versionCount
+                        display: true
+                        export: true
+                        order: true
+                        width: ''
+                        label: ''
+                        id: extModel1203-39
+                niceName: ''
+                group: ''
+                groupIconClass: ''
+                iconClass: ''
+                menuShortcut: true
+                reportClass: ''
+                chartType: pie
+                pieColumn: Description
+                pieLabelColumn: oo_id
+                xAxis: null
+                yAxis: {  }
+                modificationDate: 1676540767
+                creationDate: 1676538018
+                shareGlobally: true
+                sharedUserNames: {  }
+                sharedRoleNames: {  }
